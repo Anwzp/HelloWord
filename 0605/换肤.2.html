@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bg {
+            background: black;
+        }
+
+        .bg1 {
+            background: blue;
+        }
+
+        .bg2 {
+            background: red;
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <input value="蓝色" type="button" id="obg">
+    <input value="红色" type="button" id="obg1">
+    <input value="黑色" type="button" id="obg2">
+
+</body>
+<script>
+    function show(str) {
+        var oTit = document.querySelector("body");
+        oTit.style.background = str;
+    }
+    window.onload = function () {
+        var oBg = document.querySelector("#obg");
+        var oBg1 = document.querySelector("#obg1");
+        var oBg2 = document.querySelector("#obg2");
+
+        oBg.onclick = function () {
+            show("blue");
+        }
+        oBg1.onclick = function () {
+            show("red");
+        }
+        oBg2.onclick = function () {
+            show("black");
+        }
+    }
+</script>
+
+</html>

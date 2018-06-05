@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title >Document</title>
+    <link rel="stylesheet" href="red.css">
+</head>
+
+<body >
+    <input value="蓝色" type="button" id="obg">
+    <input value="红色" type="button" id="obg1" >
+    
+</body>
+<script>
+    window.onload=function(){
+        var oBg=document.querySelector("#obg");
+        var oBg1=document.querySelector("#obg1");
+       
+        var oTit=document.querySelector("link");
+        oBg.onclick=function(){
+            oTit.href="blue.css";
+        }
+        oBg1.onclick=function(){
+            oTit.href="red.css";
+        }
+       
+    }
+</script>
+</html>

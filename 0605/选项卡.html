@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       div  div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid brown;
+            display: none;
+        }
+
+        .active {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Box">
+    <input value="1" type="button" class="active">
+    <input value="2" type="button" class="">
+    <input value="3" type="button" class="">
+    <div style="display: block">1</div>
+    <div >2</div>
+    <div>3</div>
+</div>
+<div id="Box1">
+        <input value="1" type="button" class="active">
+        <input value="2" type="button" class="">
+        <input value="3" type="button" class="">
+        <div style="display: block">1</div>
+        <div>2</div>
+        <div >3</div>
+    </div>
+</body>
+<script>
+    function show(Id) {
+        var oId=document.querySelector(Id);
+        var aInput = oId.querySelectorAll("input");
+        var aDiv = oId.querySelectorAll("div");
+        for (var i = 0; i < aInput.length; i++) {
+            aInput[i].index = i;
+            aInput[i].onclick = function () {
+                for (var i = 0; i < aInput.length; i++) {
+                    aInput[i].className = "";
+                    aDiv[i].style.display = "none";
+                }
+                this.className = "active";
+                aDiv[this.index].style.display = "block";
+
+            }
+        }
+    };
+    window.onload = function () {
+        show("#Box");
+        show("#Box1");
+
+    }
+</script>
+
+</html>

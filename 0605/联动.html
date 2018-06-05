@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    全选
+    <input type="checkbox" id="qx">
+    <div id="Box">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+    </div>
+</body>
+<script>
+        window.onload=function(){
+              var oBox=document.querySelector("#Box");
+             // var aInput=oBox.getElementsByTagName("input");
+             var aInput=oBox.querySelectorAll("input");
+              var oQx=document.querySelector("#qx");
+              oQx.onclick=function(){
+                  for(var i=0;i<aInput.length;i++){
+                      aInput[i].checked=oQx.checked;
+                  }
+              }
+             
+              for(var i=0;i<aInput.length;i++){
+                  aInput[i].onclick=function(){
+                    var n=0;
+                      for(var i=0;i<aInput.length;i++){
+                          if(aInput[i].checked==true){
+                                     n++;
+                          }
+                      }
+                      if(n==aInput.length){
+                          oQx.checked=true;
+                        
+                      }else{
+                          oQx.checked=false;
+                      }
+                  }
+              }
+        }
+        </script>
+        
+</html>

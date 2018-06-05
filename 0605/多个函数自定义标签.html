@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button">
+    <input type="button">
+    <input type="button">
+</body>
+<script>
+    window.onload = function () {
+        var aInput = document.querySelectorAll("input")[0];
+    
+        aInput.onclick=function(){
+            aInput.index="1";
+            alert(aInput.index);
+        }
+    }
+</script>
+
+</html>

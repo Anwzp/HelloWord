@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #oZ {
+        position: fixed;
+        background: black;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        display: none;
+    }
+
+    .oDl {
+        height: 300px;
+        width: 300px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        margin-top: -150px;
+        margin-left: -150px;
+        background: red;
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <input value="登录" type="button" id="dl">
+    <div id="oZ"></div>
+    <div class="oDl">
+        <span id="oX">X</span>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+       var dl=document.querySelector("#dl");
+       var oZ=document.querySelector("#oZ");
+       var oX=document.querySelector("#oX");
+       var oDl=document.querySelector(".oDl");
+       dl.onclick = function () {
+            oDl.style.display = 'block';
+            oZ.style.display = "block";
+        }
+        oX.onclick = function () {
+            oDl.style.display = "nono";
+            oZ.style.display = "nono";
+        }
+
+    }
+</script>
+
+</html>
