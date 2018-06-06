@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        var arr=[1,2,3,4,5,6];
+        //shift 删除原数组第一项，并返回删除的元素 改变原数组
+        document.write("shift删除数组第一项返回被删除元素"+arr.shift()+"   原数组"+arr +"<br>");
+        //unshift 将参数添加到数组开头 并返回数组的长度
+        document.write("unshift将参数放置数组开头返回数组长度"+arr.unshift("7")+"   原数组"+arr+"<br>");
+        //pop 删除原数组最后一项，并返回删除元素的值‘
+        document.write("pop 删除元素组最后一项并且返回删除元素的值"+arr.pop()+"  原数组"+arr+"<br>");
+        //push 将参数添加数组的最后并且返回数组的长度
+        document.write("push 将参数添加到数组的最后并且返回数组的长度"+arr.push(8)+"  原数组"+arr+"<br>");
+        //concat 返回一个新数组 是将参数加到原数组构成的
+        document.write("concat 将参数加到原数组中生成一个新数组返回"+arr.concat(7)+"   原数组"+arr+"<br>");
+        //splice 从某一位置删除几个元素并且将参数插入到该位置
+        document.write("splice 某一位置删除几个元素并将参数加进去"+arr.splice(1,1,1)+"   原数组"+arr+"<br>")
+        //reverse  将数组反序
+        document.write("revese 将数组反序"+arr.reverse()+"  原数组"+arr+"<br>");
+        //sort 按照指定的参数对数组进行排序
+        document.write("sort 按照指定顺序进行排序"+arr.sort(5)+"   原数组"+arr+"<br>");
+        //slice 从开始到结束下标的元素生成新的数组
+        document.write("slice 从开始的下标到结束的下标的元素生成新的数组"+arr.slice(2,5)+"   原数组"+arr+"<br>")
+        //join  将数组的元素组成一个字符串默认为逗号为分隔符
+        document.write(" join 将数组组成字符串默认逗号为分割符"+arr.join("|")+"  原数组"+arr+"<br>");
+        
+        
+    }
+</script>
+</html>
