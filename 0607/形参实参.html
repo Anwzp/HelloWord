@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        //arguments 是个伪数组不能够使用数组的方法
+        var json={"a":123,"show":function(a){
+            var t=arguments[0]+4;
+            return t;
+        }}
+        alert(json.show(json.a));
+    }
+</script>
+</html>
