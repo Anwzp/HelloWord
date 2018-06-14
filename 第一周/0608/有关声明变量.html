@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        //在声明变量时 多个变量使用等号连接时 不紧靠var的变量时全局变量在块级区域中也是  使用，隔开的是内部变量外部不能使用
+        function s(){
+            var q=w=e=r=1;
+            var a=3,b=2,c=1,d=1;
+           
+        }
+        s();
+        alert(w);
+        alert(a)
+    }
+</script>
+</html>

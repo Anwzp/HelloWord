@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <span class="b c">1</span>
+        <span>3</span>
+        <span class="b">2</span>
+    </div>
+</body>
+<script>
+    function findInArr(arr,className){
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]==className){
+                return ture;
+            }
+        }
+        return false;
+    }
+    function getByClass(obj, className) {
+        var arr = [];
+        if (obj.getElementsByClassName) {
+            arr = obj.getElementsByClassName(className)
+        } else {
+            var aObj = obj.getElementsByTagName("*");
+            for (let i = 0; i < aObj.length; i++) {
+                var aclass = aObj[i].className.split(" ");
+                if (findInArr(aclass, className)) {
+                    arr.push(aObj[i]);
+                }
+            }
+        }
+        return arr;
+    }
+    window.onload = function () {
+        var ODiv = document.getElementById("box");
+        var aSpan = getByClass(ODiv, "b");
+        for (var i = 0; i < aSpan.length; i++) {
+            aSpan[i].style.color = "red";
+        }
+    }
+</script>
+
+</html>

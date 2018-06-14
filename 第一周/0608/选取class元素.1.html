@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .b{
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div id="box">
+        <span class="d b c">1</span>
+        <span>3</span>
+        <span class="b">2</span>
+    </div>
+</body>
+<script>
+    //
+    window.onload=function(){
+        //使用getElementByClassName方法时 class使用空格隔开后只要含有就存在
+        var oBox=document.getElementById("box");
+        var aSpan=document.getElementsByClassName("c");
+        for(let i=0;i<aSpan.length;i++){
+            aSpan[i].style.color="red";
+        }
+    }
+</script>
+
+</html>

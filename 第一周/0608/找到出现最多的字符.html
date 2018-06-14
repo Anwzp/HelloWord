@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function getJson(arr) {
+        let json = {};
+        for (var i = 0; i < arr.length; i++) {
+            if (json[arr[i]]) {
+                json[arr[i]]++;
+            } else {
+                json[arr[i]] = 1;
+            }
+        }
+        console.log(json)
+        return json;
+    }
+    function getArr(json) {
+        var arr = [];
+        for (i in json) {
+            arr.push({ name: i, count: json[i] })
+        }
+        return arr;
+    }
+    window.onload = function () {
+        var str = "qwesadrqwas,l;smakhuiwbjsbfuawbksnhdldnaiodwiw";
+        var arr = str.split("");
+        var json = getJson(arr);
+        var arr1 = getArr(json);
+        arr1.sort(function (m, n) {
+            return n.count - m.count;
+
+        })
+        document.write(arr1[0].name)
+    }
+</script>
+
+</html>

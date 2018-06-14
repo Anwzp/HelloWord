@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        var str="asdqasdasdqwassfasfqwsadwqwqsaaassaa";
+        var arr=str.split("");
+        var json={};
+        for(var i=0;i<arr.length;i++){
+            if(json[arr[i]]){
+                json[arr[i]]++;
+            }else{
+                json[arr[i]]=1;
+            }
+        }
+        var arr1=[];
+        for(var i in json){
+           arr1.push({"name":i,"count":json[i]});
+        }
+        arr1.sort(function(m,n){
+            return n.count-m.count;
+        })
+        document.write("出现次数最多的是"+arr1[0].name+"次数"+arr1[0].count)
+        console.log(arr1)
+    }
+</script>
+</html>
