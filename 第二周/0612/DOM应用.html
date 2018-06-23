@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul></ul>
+</body>
+<script>
+    window.onload=function(){
+        var json=[
+            {"title":"腾讯","href":"http://www.qq.com/"},
+            {"title":"新浪微博","href":"http://www.weibo.com/"},
+            {"title":"百度贴吧","href":"http://tieba.baidu.com/"}
+        ]
+        //获得对象
+    
+        document.documentElement.clientHeight
+        var oUl=document.body.children[0];
+        for(var i=0;i<json.length;i++){
+        var oA=document.createElement("a");
+        oA.innerHTML=json[i].title;
+        oA.href=json[i].href;
+        oA.target="_blank";
+        var oLi=document.createElement("li");
+        oLi.appendChild(oA);
+        oUl.appendChild(oLi);
+        }
+
+    }
+</script>
+</html>

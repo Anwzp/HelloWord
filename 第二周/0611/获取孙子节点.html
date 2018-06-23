@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="box">
+        <p>
+            <span>123</span>
+        </p>
+    </div>
+</body>
+<script>
+
+    window.onload=function(){
+        var oDiv=document.getElementById("box");
+        var oP=oDiv.children[0];
+        oP.children[0].style.color="red";
+      console.log(oP);
+
+    }
+</script>
+</html>

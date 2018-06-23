@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        //javaScript有两种数据类型 引用数据类型和非引用数据类型 引用数据类型的变量是一个内存地址 
+        //当直接使用 变量名=引用对象（变量1）   实质是将内存地址给了变量而不是赋值 所以操作变量时
+        //将改变该变量对应的内存地址的值 因为变量1和变量指向的地址一样 所以变量1的值也发生了改变
+        var arr=[1,2,3];
+        var arr1=arr;
+        arr1.push(4);
+        if(arr==arr1){
+            alert(true);
+        }
+        console.log(arr[2]);
+        console.log(arr1)
+    }
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input value="" type="text">
+    <input type="button" value="留言">
+    <ul></ul>
+</body>
+<script>
+    window.onload=function(){
+        var oText=document.body.children[0];
+        var oBut=document.body.children[1];
+        var oUl=document.body.children[2];
+        oBut.onclick=function(){
+            //创建li标签
+            var oLi=document.createElement("li");
+            oLi.innerHTML=oText.value;
+            var oA=document.createElement("a");
+            oA.href="javascript:;";
+            oA.innerHTML="删除";
+            oLi.appendChild(oA);
+            if(oUl.children.length>0){
+               oUl.insertBefore(oLi,oUl.children[0]);
+            }else{
+                oUl.appendChild(oLi);
+            }
+            oA.onclick=function(){
+                oUl.removeChild(oLi);
+            }
+            oText.value="";
+        }
+    }
+</script>
+</html>

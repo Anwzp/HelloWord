@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+    div{
+        background: red;
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+    }
+</style>
+</head>
+<body style="height: 6000px;">
+    <div></div>
+</body>
+<script>
+    window.onscroll=window.onresize=function(){
+        var oSol=document.documentElement.scrollTop||document.body.scrollTop;
+        var cilen=document.documentElement.clientHeight;
+        var oDiv=document.body.children[0];
+        oDiv.style.top=parseInt(oSol+cilen)-oDiv.offsetHeight+"px";
+    }
+</script>
+</html>

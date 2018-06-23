@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div >
+        <ul id="box">
+            13
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        //nodeType 区分节点类型 1标签节点 3文本节点
+        var oBox=document.getElementById("box");   
+        var aArr=oBox.childNodes;
+      
+       for(let i=0;i<aArr.length;i++){
+           console.log(aArr[i]);
+           console.log(aArr[i].nodeType)
+       }
+    }
+</script>
+</html>
