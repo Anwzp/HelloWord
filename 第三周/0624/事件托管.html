@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    li{
+        list-style: none;
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin: 20px;
+        float: left;
+    }
+</style>
+<script src="./jquery.0.0.js"></script>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    //dom事件必须绑定才能使用
+    
+    $(function(){
+        let oUl=document.body.children[0];
+        let aLi=document.getElementsByTagName("li");
+        oUl.onclick=function(ev){
+            //target获得触发事件的对象
+            //srcElement产生事件的对象
+            //explicitOriginalTarget原始时间的节点
+            let oEvent=ev||event;
+            console.log(oEvent)
+            let oTn=(oEvent.srcElement||oEvent.explicitOriginalTarget)&&oEvent.target;
+            console.log(oTn)
+            console.log(oEvent.srcElement)
+            console.log(oEvent.target)
+            if(oTn.tagName!=="LI")return;
+            oTn.style.background="blue";
+        }
+    });
+</script>
+</html>

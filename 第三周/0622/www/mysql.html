@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./jquery.js"></script>
+<body>
+    
+</body>
+<script>
+
+    $.ajax({
+        
+        url:"/selet",
+        type:'get',
+        dataType:'json',
+        cache:true,
+        success:function(result){
+            console.log(result)
+          $.each(result.data,function(k,y){
+           $(`<div>
+            ${y.id}${y.name}${y.bh}<div>
+            `).prependTo('body');
+              
+          })
+          
+        }
+    })
+</script>
+</html>

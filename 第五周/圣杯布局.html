@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .header {
+        height: 30px;
+        line-height: 30px;
+        background: green;
+        text-align: center;
+    }
+
+    .minner,
+    .left,
+    .right {
+        position: relative;
+        float: left;
+        height: 200px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 150px;
+    }
+
+    .minner {
+        width: 100%;
+        background: #ffffff;
+    }
+
+    .right {
+        width: 150px;
+        background: #cccccc;
+        margin-left: -150px;
+        left: 150px;
+    }
+
+    .left {
+
+        width: 150px;
+        background: red;
+        margin-left: -100%;
+        right: 150px;
+        ;
+    }
+</style>
+
+<body>
+    <div class="header">头部</div>
+    <div class="container">
+        <div class="minner">
+            <h3>圣杯布局是三栏布局，两侧宽固定，中间宽度自适应</h3>
+        </div>
+        <div class="left">
+            <h3>left</h3>
+        </div>
+        <div class="right">
+            right
+        </div>
+    </div>
+</body>
+
+</html>

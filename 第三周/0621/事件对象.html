@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #oBox1{
+        width: 400px;
+        height: 400px;
+        background-color:red;
+    }
+    #oBox2{
+        width: 300px;
+        height: 300px;
+        background-color:blue;
+    }
+    #oBox3{
+        width: 200px;
+        height: 200px;
+        border: none;
+        background-color:black;
+    }
+</style>
+<body>
+    <div id="oBox1">
+        <div id="oBox2">
+            <div id="oBox3"></div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        let oDiv1=document.querySelector("#oBox1");
+        let oDiv2=document.querySelector("#oBox2");
+        let oDiv3=document.querySelector("#oBox3");
+        oDiv3.onclick=function(ev){
+            oEvent=ev||event;
+            console.log(oEvent)
+            console.log(oEvent.clientX);
+            console.log(oEvent.clientY)
+        }
+    }
+</script>
+</html>

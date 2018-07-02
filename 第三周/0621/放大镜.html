@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Xn-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    #big{
+        width: 400px;
+        top: 200px;
+        left: 400px;
+        height:300px;
+        position: absolute;
+        display: none;
+        overflow: hidden;
+        border: 1px solid red;
+    }
+    #min{
+        width: 240px;
+        left: 100px;
+        top: 200px;
+        height: 200px;
+        position: absolute;
+        border: 1px solid red;
+    }
+    #big img{
+        position: absolute;
+    }
+    #float-box{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #6c6c6c;
+        display: none;
+    }
+</style>
+<body>
+   <div id="min">
+       <div id="mark"></div>
+       <div id="float-box" style="display: none;"></div>
+       <img src="素材/d7036c9a17f5fda2-9ec889205f108c9b-62e9392c5bf46988e117606fff397c52.jpg" alt="">
+   </div>
+   <div id="big">
+       <img src="素材/d7036c9a17f5fda2-9ec889205f108c9b-62e9392c5bf46988e117606fff397c52.png" style="display: none;" alt="">
+   </div>
+</body>
+<script>
+    
+   window.onload=function(){
+       let oBig=document.querySelector("#big");
+       let oMin=document.querySelector("#min");
+       let oFb=document.querySelector("#float-box");
+       let oBigImg=oBig.children[0];
+       function disBlok(){
+        oBig.style.display="block";
+        oFb.style.display='block';
+        oBigImg.style.display="block";
+       }
+       function disNon(){
+        oBig.style.display="none";
+        oFb.style.display='none';
+        oBigImg.style.display="none";
+       }
+       oMin.onmousemove=function(ev){
+           disBlok();
+           let oEvent=ev||event;
+           let ofL=oEvent.clientX-oFb.offsetWidth/2-oMin.offsetLeft;
+           let ofT=oEvent.clientY-oFb.offsetHeight/2-oMin.offsetTop;
+         
+           if(ofL<0){
+               ofL=0;
+           }else if(ofL>oMin.offsetWidth-oFb.offsetWidth){
+               
+               ofL=oMin.offsetLeft+oMin.offsetWidth-oMin.offsetLeft-oFb.offsetWidth;
+           }
+           if(ofT<0){
+            ofT=oMin.offsetHeight-oMin.offsetTop;
+           }else if(ofT>oMin.offsetHeight-oFb.offsetHeight){
+            ofT=oMin.offsetTop+oMin.offsetHeight-oMin.offsetTop-oFb.offsetHeight;
+           }
+           oFb.style.left=ofL+'px';
+           oFb.style.top=ofT+'px';
+           //计算图片移动的距离
+           //let oImgL=l/(oMin.offsetWidth-oFb.offsetWidth);
+           //let oImgT=t/(oMin.offsetHeight-oFb.offsetHeight);
+          // oBigImg.style.left=-oImgL+'%';
+           //oBigImg.style.top=-oImgT+'%';
+            let oImgL=l/(oMin.offsetWidth-oFb.offsetWidth)*(oBig.offsetWidth+oBigImg.offsetWidth);
+           let oImgT=t/(oMin.offsetHeight-oFb.offsetHeight)*(oBig.offsetHeight+oBigImg.offsetHeight);
+           oBigImg.style.left=-oImgL+'px';
+           oBigImg.style.top=-oImgT+'px';
+       }
+      
+   }
+</script>
+</html>

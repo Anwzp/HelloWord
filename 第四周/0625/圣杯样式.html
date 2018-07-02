@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯样式</title>
+</head>
+<style>
+    body{
+        border: 1px solid black;
+    }
+    .heard{
+        width: 100%; 
+        text-align: center;
+    }
+   .container{
+       width: 100%;
+   }
+   .midden{
+       width: 100%;
+       height: 200px;
+       background: red;
+   }
+   .left,.right,.midden{
+       position: relative;
+       float: left;
+   }
+   .left{
+       width: 200px;
+       height: 200px;
+       margin-left: -100%;
+       background: blue;
+   }
+   .right{
+       width: 200px;
+       height: 200px;
+       margin-right: -100%;
+       background: yellow;
+       right:200px ;
+   }
+</style>
+<body>
+    <div class="heard">heard</div>
+    <div class="container">
+        <div class="midden">midden</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

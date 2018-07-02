@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+   <style>
+       *{
+           padding: 0;
+           list-style: none;
+           margin: 0;
+       }
+   #oBox{
+       position: absolute;
+       left: 0;
+       top: 0;
+       width: 100px;
+       height: 100px;
+       background-color: black;
+   }
+   </style>
+<body style="width: 3000px;height: 3000px;">
+    <div id="oBox"></div>
+</body>
+<script>
+    window.onload=function(){
+        let oBox=document.querySelector("#oBox");
+        let disX=null;
+        let disY=null;
+      
+        oBox.onmousedown=function(ev){
+            let oEvent=ev||event;
+            let socL=document.documentElement.scrollLeft||document.body.scrollLeft;
+            let scoT=document.documentElement.scrollTop||document.body.scrollTop;
+            //offsetLeft是指该对象到左边的距离   clientWidth是当前对象的可视宽度
+            disX=oEvent.clientX-oBox.offsetLeft+socL;
+            disY=oEvent.clientY-oBox.offsetTop+scoT;
+            document.onmousemove=function(ev){
+                let oEvent=ev||event;
+                let scoL=document.documentElement.scrollLeft||document.body.scrollLeft;
+                let scoT=document.documentElement.scrollTop||document.body.scrollTop;
+                let l=oEvent.clientX-disX+scoL;
+                let t=oEvent.clientY-disY+scoT;
+                if(l<0){
+                    l=0
+                    //判断div距离左侧的距离是否超出整个长度  可拖拽距离最远距离边界为div的可视长宽
+                }else if(l>document.documentElement.clientWidth-oBox.offsetWidth+scoL){
+                    l=document.documentElement.clientWidth-oBox.offsetWidth+scoL;
+                }
+                if(t<0){
+                    t=0
+                }else if(t>document.documentElement.clientHeight-oBox.offsetHeight+scoT){
+                    t=document.documentElement.clientHeight-oBox.offsetHeight+scoT;
+                }
+                oBox.style.left=l+'px';
+                oBox.style.top=t+'px';
+            }
+            document.onmouseup=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+        }
+        
+    }
+</script>
+</html>
