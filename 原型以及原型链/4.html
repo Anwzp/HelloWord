@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Foo() {
+        console.log("Foo里面的日志");
+        this.fooName = "foo的name";}
+    function Bar() {}
+    Bar.prototype = new Foo();
+    var b = new Bar();
+    console.log(b.fooName);//输出"foo的name"
+    console.log(Bar.fooName);//输出undefined
+    console.log(Bar.prototype.fooName);//输出"foo的name"
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Preson() {
+        this.name = '原型';
+        this.sayName=function () {
+            let str=alert('内存地址不一样');
+        }
+    }
+    Preson.prototype.age=123;
+    Preson.prototype.getName = function () {
+        return this.name;
+    };
+    Preson.prototype.sex = function (sex) {
+        alert(sex);
+    };
+    let preson1=new Preson();
+    let preson2=new Preson();
+    console.log( 'preson1的sayName和preson2.sayName ' + (preson1.sayName===preson2.sayName));//Preson函数所有对象公共的方法
+    console.log('改变preson2的name属性的值前'+'preson1.name:'+preson1.name+'preson2.name:'+preson2.name);
+    preson2.name='我是对象二号';
+    console.log('改变preson2的name属性的值前'+'preson1.name:'+preson1.name+'preson2.name:'+preson2.name);
+    console.log('原型上的getName方法'+ (preson1.getName===preson2.getName));
+    console.log('改变原型上age属性的前'+'preson1.age:'+preson1.age+'preson2.age:'+preson2.age);
+    Preson.prototype.age=1233;
+    console.log('改变原型上age属性的之后'+'preson1.age:'+preson1.age+'preson2.age:'+preson2.age);
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+运行fun(0)之后 相当于运行了fun(0,undefined) 所以控制台输出 undefined 返回的是一个 fun:{} 此时 n=0并且n在运行结束后不会立即消失
+下次再次运行时调用的是fun:function(m){ return (1,0)} 因为fun闭包了外层函数的n，所以呢运行时为fun(1,0) ，运行结果0,
+运行结束后返回一个fun:{}然后重复次过程
+此后因为都是使用的对象a所以结果为undefined 0 0 0 同理可得出后面的两个的结果
+b是则不是所以b的结果为undefined 0 0 0
+</body>
+<script>
+    function fun(n, o) {
+        console.log(o);
+        return {
+            fun: function (m) {
+                //在函数表达式内部能不能访问存放当前函数的变量所以这个fun是最外层的fun
+                return fun(m, n);
+            }
+        };
+    }
+
+    console.log(fun)
+    console.log(fun().fun)
+    var a = fun(0);
+    a.fun(1);
+    a.fun(2);
+    a.fun(3);//undefined 0 0 0
+    var b = fun(0).fun(1).fun(2).fun(3);//undefined  0 1 2
+    console.log(fun(0).fun(1).fun(2))
+    var c = fun(0).fun(1);
+    c.fun(2);
+    c.fun(3);//undefined 1 1 1
+    //函数表达式内部访问存放当前函数的变量的例子
+    function f1() {
+        return {
+            f1: function () {
+                alert(1);
+                return f1();
+            }
+        }
+    }
+
+    f1().f1();
+</script>
+</html>

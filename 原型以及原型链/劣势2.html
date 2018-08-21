@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    {function A (light) {
+        this.light1 = light;
+    };
+    function B (light) {
+        this.light = light;
+    };
+    //给B赋值的同时，想给A赋值，无法实现
+    B.prototype = new A();
+    var C = new B(123);
+    console.log(C.light);
+    console.log(C.light1);}
+    //解决方法
+    {function A (light) {
+        this.light1 = light;
+    };
+    function B (light) {
+        this.light = light;
+        A.call(this,light);//手动调用A的构造方法
+    };
+    //给B赋值的同时，给A赋值
+    B.prototype = new A();
+    var C = new B(123);
+    console.log(C.light);
+    console.log(C.light1);}
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    * ES5继承
+    * 实现原理：先创建子类的实例，通过修改父类的this的指向实现继承
+    * 例：
+    * */
+    function Person() {this.name = 'ES5继承：父类';}
+    Person.prototype.sayName = function () {console.log('原型上的方法');}
+    function Child() {}
+    let child = new Child();
+    Person.call(child);
+    //但无法继承父类原型上的方法
+     console.log(child.sayName)//undefined
+    //实现继承原型上的方法
+    Child.prototype = new Person();
+    child = new Child();
+    child.sayName();
+    //但此时构造函数是指向Person的所有需要将构造函数指回来
+    console.log(child.constructor)
+    child.constructor=Child;
+    console.log(child.constructor)
+    //ES5的继承实现完毕
+    console.log(child.name)
+
+    /*
+    * ES6继承
+    * 实现原理：先将父类的实例方法属性添加到this上，然后通过子类的构造函数修改this的指向将其添加到父类
+    * 例：
+    * */
+    class Father{
+        constructor(x){
+            this.name=x;
+        }
+    }
+    class Son extends  Father{
+        constructor(x){
+            super(x);//子类必须在constructor中调用super()方法;super相当于调用父类的构造函数，此时的this'是指向子类的所以就将父类的实例方法属性添加到了子类
+        }
+    }
+
+</script>
+</html>

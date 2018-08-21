@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+在函数表达式内部能不能访问存放当前函数的变量
+</body>
+<script>
+    //在函数表达式内部能不能访问存放当前函数的变量
+    var a = 10;
+
+    function foo() {
+        console.log(a);
+    }
+
+    function aaa(fn) {
+        var a = 100;
+        fn();
+    }
+    aaa(foo);//10
+</script>
+</html>

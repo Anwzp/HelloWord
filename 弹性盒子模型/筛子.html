@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div1,.content3,.content5 {
+        display: flex;
+        height: 100px;
+        width: 100px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        border-radius: 16px;
+        float: left;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+
+    .content1 {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+
+    }
+
+    .content2 {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .content2 div,.content4 div {
+        margin: 5px;
+    }
+    .content6 div{
+        margin: 1px;
+    }
+    .content3 .div3,.content5 .div5{
+        flex-wrap: wrap;
+        width: 33%;
+        display: flex;
+    }
+
+    .content3 .div3:nth-child(2),.content5 .div3:nth-child(5){
+        justify-content: center;
+        align-items: center;
+    }
+    .content3 .div3:nth-child(3),.content5 .div3:nth-child(3){
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .content4,.content6 {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div1 div, .content3 .div3 div,.content5 .div5 div {
+        background: red;
+        border: 1px solid red;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        height: 30px;
+        width: 30px;
+    }
+
+    .content5 .div5:nth-child(1) div:nth-child(1){
+        align-self: self-end;
+    }
+    .content5 .div5:nth-child(1) div:nth-child(2){
+        align-self: flex-end;
+    }
+    .content5 .div5:nth-child(2) div:nth-child(1){
+        align-self: center;
+    }
+    .content5 .div5:nth-child(3) div:nth-child(1){
+        align-self: self-end;
+    }
+    .content5 .div5:nth-child(3) div:nth-child(2){
+        align-self: flex-end;
+    }
+</style>
+<body>
+<div class="div1 content1">
+    <div class="div2"></div>
+</div>
+<div class="div1 content2">
+    <div class="div2"></div>
+    <div class="div2"></div>
+</div>
+<div class=" content3">
+    <div class="div3">
+        <div></div>
+    </div>
+    <div class="div3">
+        <div></div>
+    </div>
+    <div class="div3">
+        <div></div>
+    </div>
+</div>
+<div class="div1 content4">
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+</div>
+<div class=" content5">
+    <div class="div5"><div></div><div></div></div>
+    <div class="div5"><div></div></div>
+    <div class="div5"><div></div><div></div></div>
+</div>
+<div class="div1 content6">
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+    <div class="div4"></div>
+</div>
+</body>
+</html>

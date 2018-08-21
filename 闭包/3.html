@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+创建了10个闭包，并将它们存储到一个数组中。这些闭包都是在同一个函数调用中定义的，因此它们可以共享变量 i 。
+当return[i]返回时，变量 i 的值是10，所有的闭包都共享这一个值，因此，数组中的函数的返回值都是同一个值。
+函数的执行依赖于变量的作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的：
+</body>
+<script>
+    (function () {
+        var result = [];
+        for (var i = 0; i < 10; i++) {
+            result[i] = function () {
+                return i;
+            }()
+        }
+        alert(result[1]);  //10
+        alert(result[2]);  //10
+    })();
+</script>
+</html>

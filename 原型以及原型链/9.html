@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+一张图解决问题
+<img src="clipboard.png" height="600" width="502"/></body>
+<script>
+    function F(){};
+    console.log(F.prototype)
+    Object.prototype.a=function(){
+        console.log('a()')
+    };
+    F.prototype.b=function(){
+        console.log('b()')
+    }
+    var f=new F();
+    f.a()//a()
+    f.b()//报错找不到b这个函数
+    F.a()//a()
+    F.b()//b()
+</script>
+</html>

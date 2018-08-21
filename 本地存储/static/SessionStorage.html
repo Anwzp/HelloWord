@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="设置" id="sz">
+<input type="button" value="删除" id="s">
+<a href="./LocalStorage.html" target="_blank">跳转</a>
+</body>
+<script>
+    window.sessionStorage.clear()
+    let sz=document.getElementById('sz');
+    let s=document.getElementById('s');
+    sz.onclick=function(){
+        window.sessionStorage.setItem('yh','123');
+        window.sessionStorage.name='张山';
+        console.log(  window.localStorage.getItem('yh'))
+    }
+    s.onclick=function(){
+        let arr= window.sessionStorage.getItem('name');
+        console.log(arr)
+        window.sessionStorage.removeItem('name');
+    }
+</script>
+</html>

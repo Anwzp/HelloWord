@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+JavaScript中变量和函数的声明会提升到最顶部执行但匿名函数不会提升，所以function getName()提升后匿名函数getName在下面执行时
+会执行匿名函数所以getName()执行的为4 Foo是在window执行环境下执行，所以this指向window结果也是4
+new Foo.getName（）相当于执行了创建了一个getName的实例
+new Foo().getName（）执行时因为function Foo()的实例中
+没有getName属性所以会去原型链上寻找结果为3
+最后相当于new了个undefined
+</body>
+<script>
+    function Foo() {
+        var getName = function () {
+            console.log(1);
+        };
+        return this;
+    }
+
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+    var getName = function () {
+        console.log(4);
+    };
+
+    function getName() {
+        console.log(5);
+    }
+
+    Foo.getName();//2
+    getName();//4
+    Foo().getName();//4
+    getName();//4
+    new Foo.getName();//2
+    new Foo().getName();//3
+    new new Foo().getName();//3
+</script>
+</html>

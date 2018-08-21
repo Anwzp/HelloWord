@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+:给对象设置私有变量并且利用特权方法去访问私有属性
+</body>
+<script>
+    function Fun(){
+        var name = 'tom';
+
+        this.getName = function (){
+            return name;
+        }
+    }
+
+    var fun = new Fun();
+    console.log(fun.name);//输出undefined,在外部无法直接访问name
+    console.log(fun.getName());//可以通过特定方法去访问
+
+</script>
+</html>

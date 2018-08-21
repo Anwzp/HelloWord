@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+封装相关功能集
+一个内联执行的函数表达式返回了内部函数对象的一个引用。并且分配了一个全局变量，
+让它可以被作为一个全局函数来调用。而缓冲数组作为一个局部变量被定义在外部函数表达式中。
+它没有被扩展到全局命名空间中，并且无论函数什么时候使用它都不需要被再次创建。
+</body>
+<script>
+    var getImgInPositionedDivHtml = (function () {
+        var buffAr = [
+            '<div id="',
+            '',   //index 1, DIV ID attribute
+            '" style="position:absolute;top:',
+            '',   //index 3, DIV top position
+            'px;left:',
+            '',   //index 5, DIV left position
+            'px;width:',
+            '',   //index 7, DIV width
+            'px;height:',
+            '',   //index 9, DIV height
+            'px;overflow:hidden;\"><img src=\"',
+            '',   //index 11, IMG URL
+            '\" width=\"',
+            '',   //index 13, IMG width
+            '\" height=\"',
+            '',   //index 15, IMG height
+            '\" alt=\"',
+            '',   //index 17, IMG alt text
+            '\"><\/div>'
+        ];
+        return (function (url, id, width, height, top, left, altText) {
+            buffAr[1] = id;
+            buffAr[3] = top;
+            buffAr[5] = left;
+            buffAr[13] = (buffAr[7] = width);
+            buffAr[15] = (buffAr[9] = height);
+            buffAr[11] = url;
+            buffAr[17] = altText;
+            return buffAr.join('');
+        });
+    })();
+
+</script>
+</html>

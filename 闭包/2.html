@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+在JavaScript高级程序设计中一句话
+匿名函数的执行环境具有全局性，因此其this对象通常指向window。
+所以在obj中this的指向是window所以结果是global
+</body>
+<script>
+    var name = 'global';
+    var obj = {
+        name : 'obj',
+        dose : function(){
+            this.name = 'dose';
+            return function(){
+                return this.name;
+            }()
+        }
+    }
+
+    alert(obj.dose())//gloal
+</script>
+</html>

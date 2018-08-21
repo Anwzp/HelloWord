@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //变量提升的例子
+
+    var a = function () {
+        console.log('匿名函数')
+    }
+
+    function a() {
+        console.log('具体名函数')
+    }
+    var a;
+    a();
+
+
+</script>
+</html>

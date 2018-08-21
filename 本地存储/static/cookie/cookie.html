@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="设置" id="sz">
+<input type="button" value="删除" id="s">
+
+</body>
+<script src="../jquery.js"></script>
+<script src="../addCookie.js"></script>
+<script>
+    $.ajax({
+        url:'/cook',
+        type:'get',
+        success:function (re) {
+            console.log(re)
+        },
+        error:function (err) {
+
+        }
+    })
+    let sz=document.getElementById('sz');
+    let s=document.getElementById('s');
+    let oData=new Date();
+    oData.setDate(oData.getDate()+100);
+   sz.onclick=function(){
+       document.cookie=`name=张三;PATH:cookie;expiration:${oData};`;
+   }
+   s.onclick=function(){
+       //removeCookie('name')
+       console.log(document.cookie)
+   }
+    console.log(document.cookie)
+   // let json=`{name:张三,age:18}`
+   // let json1=`{name:张三1,age:18}`
+    //removeCookie(`name1`);
+  //  removeCookie('name')
+   // addCookie('name',`张三`,1000);
+    //addCookie('age',18,1000);
+    //removeCookie('age');
+   // console.log(getCookie('name'))
+</script>
+</html>

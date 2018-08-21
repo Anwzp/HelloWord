@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="设置" id="sz">
+<input type="button" value="删除" id="s">
+</body>
+<script src="jquery.js"></script>
+<script>
+    window.localStorage.clear()
+    let sz=document.getElementById('sz');
+    let s=document.getElementById('s');
+    sz.onclick=function(){
+        console.log()
+        window.localStorage.name='张山';
+        console.log(  window.sessionStorage.getItem('yh'))
+    }
+    s.onclick=function(){
+       let arr= window.localStorage.getItem('name');
+       console.log(arr)
+        window.localStorage.removeItem('name');
+    }
+
+</script>
+</html>

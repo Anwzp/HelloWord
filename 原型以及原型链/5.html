@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+写一个原型继承的例子
+</body>
+<script>
+    function Animal() {
+        this.eat=function () {
+            console.log('animal eat')
+        }
+    }
+    function Dog() {
+        this.bark=function () {
+            console.log('doag bark')
+        }
+    }
+    Dog.prototype=new Animal();
+</script>
+</html>

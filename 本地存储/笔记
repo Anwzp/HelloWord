@@ -1,0 +1,128 @@
+js中实现本地存储的方式
+    cookies： 浏览器均支持，容量为4KB
+    LocalStorage： HTML5，容量为5M
+    sessionStorage： HTML5，容量为5M
+    UserData：仅IE支持，容量为64KB
+    Flash：100KB，非HTML原生，需要插件支持
+    Google Gears SQLite ：需要插件支持，容量无限制
+    globalStorage：Firefox独有的，Firefox13开始就不再支持这个方法
+
+cookie的作用：
+   因为http是无状态的，就是你放过一次后http协议不会保存本次请求的信息，也就是说你下次的请求和这次的请求是没有关联的，
+那么cookie的作用就是：当你在第一次访问服务器时，服务器响应会在你的本地设置一个cookie，这个可以从查看服务器响应报头看到，
+然后当你下次访问的时候会携带过去来识别是否是同一次回话（仅在同源的http访问中携带）
+在experss中设置cookie
+            下载插件：cnpm install cookie-parser
+            引入 var cookieParser = require('cookie-parser')
+                 var app = express()
+                 app.use(cookieParser())
+             使用：response.cookie（name，key，{}）
+设置cookie的几个属性：
+   domain   设置可以访问cookie的域名
+   maxAge   设置cookie的失效时间
+            正数 时间到后过去  负数cookie为临时的cookie关闭浏览器即消失  0表示删除cookie
+   path     表示cookie的使用路径
+   secure   表示该cookie是否仅被使用安全协议运输，默认为false(可选）
+   version  cookie使用的版本号
+            0 表示遵循Netscape的Cookie规范，目前大多数用的都是这种规范；
+            1 表示遵循W3C的RFC2109规范；规范过于严格，实施起来很难。
+   isHttpOnly  限制非HTTP协议程序接口对客户端进行Cookie进行访问，设置后代表不能够被客户端获取，只能被服务端获取(只能在服务端设置）
+
+
+
+客户端:
+     设置cookie:
+     document.cookie=value;
+        可设置属性 expiration 存在的时间 PATH 可设置生效的路径 例：/static  仅在static目录下的文件生效
+     删除
+        将expiration设置为0是立即删除 为负数则是在浏览器关闭后删除
+     特点：
+        cookie的名字只有一个一旦设置不能更改，存储的时候以键值的形式存储，取出后是个字符串的形式
+
+     cookie的优点为：
+     不需要任何服务器的资源，因为他是浏览器发送时携带的一定程度上减轻了服务器的压力
+     可以设置到期时间，或者无限存在，比较灵活
+     可以存一些不敏感的信息，所以即使被盗了也不会有什么重大损失
+cookie的缺点：
+     cookie的大小有限制，不能超过4kb，超过就返回空字符串，并且数量也是有限制的
+     安全问题，当有人拦截到cookie时不需要知道cookie有什么只需要转发就可以达到目的
+     用户配置禁用后，该功能将失效
+
+LocalStorage
+    LocalStorage的主要作用是将数据保存在客户端中，并且保存的信息是永久行的，而sessionStorage则是浏览器关闭后就会消失。
+    LocalStorage主要作为本地存储，解决cookie存储空间不足的问题，大小一般为5M
+    LocalStorage是本地共享的，设置之后当前浏览器的所有同源窗口都能够获取到
+    LocalStorage与cookie比较
+        优势：
+            可存储空间较大（5M）
+            可以将第一次请求的数据直接存储到本地，可以看做前端版的数据库，相比cookie 可以节约带宽。
+        劣势：
+            低版本的浏览器不支持（IE8及其以下）
+            在隐私模式下不可读取
+            不能够被爬虫抓取到
+部分用法：
+    清空
+        localStorage.clear()
+    设置（两种）
+        localStorage.setItem(key,value)
+        localStorage.name=value;
+            注意：存储JSON数据格式时，因为存储的都是字符串，在存储前将数据用JSON.stringify（）转为字符串，取出后要使用JSON.parse（）方法将其转为json格式
+    读取
+        localStorage.getItem(key)
+     删除
+        localStorage.removeItem(key)
+     检测存储空间是否满了
+        if(!localStorage.getItem('bgcolor')) {
+         populateStorage();
+        } else {
+         setStyles();
+        }
+ SessionStorage
+    SessionStorage和LocalStorage的作用相同，区别在于：
+        SessionStorage是会话级别的，在浏览器关闭后立即消失，并且SessionStorage是仅在本窗口生效的，无论你是同源还是同一个页面
+        这要不是在同一个浏览器窗口就是获取不到的
+部分用法：
+    清空
+        SessionStorage.clear()
+    设置（两种）
+        sessionStorage.setItem(key,value)
+        sessionStorage.name=value;
+            注意：存储JSON数据格式时，取出后要使用parse（）方法将其传唤为json格式
+    读取
+        sessionStorage.getItem(key)
+    删除
+        sessionStorage.removeItem(key)
+
+ cookie、SessionStorage、LocalStorage的主要作用
+ 在本地保存一些数据后，需要该数据时可以直接从本地取出来，降低了部分服务器的压力，并且从本地获取数据比从服务器获取更快，性能好。
+
+ 注意点：
+        sessionStorage在父级页面调用子级页面时也可以使用
+
+    三者之间的区别
+    -------------------------------------------------------------------------------------------------------------------------------------------------------
+         名称        |            范围                 |             http请求是否携带          |          可存储大小        |        保存时间
+    -------------------------------------------------------------------------------------------------------------------------------------------------------
+        Cookie       |      同源的窗口中都是共享的     |        每次http请求都会携带cookie     |               4KB          |可设置保存时间，也可以永久保存
+    -------------------------------------------------------------------------------------------------------------------------------------------------------
+       LocalStorage  |      同源的窗口中都是共享的     |           http请求不会自动携带        |               5MB          |  不删除就不会消失，永久保存
+    -------------------------------------------------------------------------------------------------------------------------------------------------------
+      SessionStorage |      仅在当前浏览器窗口有效     |           http请求不会自动携带        |               5MB          |      浏览器关闭后消失
+    -------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    userdata：
+            仅在IE下支持，容量64KB，是微软为IE开辟的一块专属的内存空间
+
+            获取userData元素
+            var oPersist=oPersistForm.oPersistText;
+            设置
+            oPersist.setAttribute（name，value）
+            保存
+            oPersist.save（’oXMLBranch‘）
+            获取值
+            加载保存的元素
+            oPersist.load（’oXMLBranch‘）
+            获取
+            oPersist.getAttribute（name）
